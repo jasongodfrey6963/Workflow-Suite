@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app>
+        <Toolbar/>
+
+        <new-order></new-order>
+        <!--<Home/>
+        <OrderScreen v-if="showModal"/>-->
+    </v-app>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Toolbar from "./components/Toolbar.vue";
+import Home from "./components/Home";
+import OrderScreen from "./components/OrderScreen";
+import newOrder from "./components/newOrder";
 export default {
-  name: 'app',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Toolbar,
+    Home,
+    OrderScreen,
+    newOrder
+  },
+  computed: {
+    showModal() {
+      return this.$store.state.showModal;
+    }
+  },
+  methods: {}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
